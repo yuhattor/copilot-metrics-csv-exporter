@@ -1,5 +1,10 @@
+> [!WARNING]  
+> Changes may be made to the API in a recent announcement soon, and scripts may no longer be available. I will update again.
+
+<!--
 # copilot-metrics-csv-exporter
 GitHub Copilot Metrics CSV Exporter
+-->
 
 ## Usage
 
