@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the path to the output file
-OUTPUT_FILE="org-per-language-result.csv"
+OUTPUT_FILE="organization-per-language-result.csv"
 
 # Get the breakdown data for the usage in the organization
 DATA=$(gh api \
