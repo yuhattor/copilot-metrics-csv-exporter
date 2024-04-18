@@ -1,14 +1,9 @@
 > [!WARNING]  
 > Changes may be made to the API in a recent announcement soon, and scripts may no longer be available. I will update again.
 
-<!--
-# copilot-metrics-csv-exporter
-GitHub Copilot Metrics CSV Exporter
--->
-
 ## Usage
 
-This script will generate CSV files for the GitHub Copilot Usage Metrics API
+This script will generate CSV files for the Usage Metrics API
 
 ### Organization Metrics
 
