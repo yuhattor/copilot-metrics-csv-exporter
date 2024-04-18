@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Define the path to the output file
-OUTPUT_FILE="copilot-org-total.csv"
+OUTPUT_FILE="organization-total.csv"
 
-# Get the breakdown data for the Copilot usage in the organization
+# Get the breakdown data for the usage in the organization
 DATA=$(gh api \
   -H "Accept: application/vnd.github+json" \
   -H "X-GitHub-Api-Version: 2022-11-28" \

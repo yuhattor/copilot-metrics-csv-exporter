@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Define the path to the output file
-OUTPUT_FILE="copilot-ent-per-language-result.csv"
+OUTPUT_FILE="enterprise-per-language-result.csv"
 
-# Get the breakdown data for the Copilot usage in the enterprise
+# Get the breakdown data for the usage in the enterprise
 DATA=$(gh api \
   -H "Accept: application/vnd.github+json" \
   -H "X-GitHub-Api-Version: 2022-11-28" \
