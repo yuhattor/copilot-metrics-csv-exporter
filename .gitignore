@@ -1,0 +1,5 @@
+.env
+orgs.tmp
+data/*
+!data/*.csv
+!data/.keep

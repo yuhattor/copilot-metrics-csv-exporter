@@ -1,0 +1,45 @@
+name: Weekly CSV Export - Via Pull Request
+
+on:
+  workflow_dispatch:
+  # schedule:
+  #   - cron: '0 0 * * 1'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+          cache: 'pip'
+      - run: pip install -r requirements.txt
+      - name: 
+        run: |
+          # Set the git configuration
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+          # Create a new branch with a random HASH
+          HASH="$(openssl rand -hex 8)"
+          git checkout -b "report/${HASH}"
+
+          # Run the main script
+          sh main.sh $ENTERPRISE_SLUG
+
+          # If there are changes, push and create PR
+          if [[ $(git status --porcelain) ]]; then
+            git add .
+            git commit -m "Data Update - $(date +'%Y-%m-%d')"
+            git push origin "report/${HASH}"
+            gh pr create --base $DEFAULT_BRANCH --head "report/${HASH}" --title "$Report Export - $(date +'%Y-%m-%d')" -b "Here's a new report"
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+          ENTERPRISE_SLUG: ${{ secrets.ENTERPRISE_SLUG }}

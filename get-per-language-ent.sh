@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Define the path to the output file
-OUTPUT_FILE="enterprise-per-language-result.csv"
-
 # Get the breakdown data for the usage in the enterprise
 DATA=$(gh api \
   -H "Accept: application/vnd.github+json" \
@@ -23,6 +20,6 @@ echo "$DATA" | jq -r '
     .lines_suggested,
     .lines_accepted,
     .active_users
-  ] | @csv' > "$OUTPUT_FILE"
+  ] | @csv' >> $2
 
-echo "Breakdown data saved to $OUTPUT_FILE"
+echo "Breakdown data saved to $2"

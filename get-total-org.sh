@@ -1,13 +1,10 @@
 #!/bin/bash
 
-# Define the path to the output file
-OUTPUT_FILE="enteprise-total.csv"
-
-# Get the breakdown data for the usage in the enterprise
+# Get the breakdown data for the usage in the organization
 DATA=$(gh api \
   -H "Accept: application/vnd.github+json" \
   -H "X-GitHub-Api-Version: 2022-11-28" \
-  /enterprises/$1/copilot/usage)
+  /orgs/$1/copilot/usage)
 
 # Convert the retrieved data to CSV using jq and save it to a file
 echo "$DATA" | jq -r '
@@ -20,11 +17,15 @@ echo "$DATA" | jq -r '
   .total_active_users as $total_active_users |
   [
     $day,
+    "ORG_NAME_PLACEHOLDER",
     $total_suggestions_count,
     $total_acceptances_count,
     $total_lines_suggested,
     $total_lines_accepted,
     $total_active_users
-  ] | @csv' > "$OUTPUT_FILE"
+  ] | @csv' >> $2
 
-echo "CSV data saved to $OUTPUT_FILE"
+## Replace ORG_NAME_PLACEHOLDER with the actual organization name
+sed -i "s/ORG_NAME_PLACEHOLDER/$1/g" $2
+
+echo "CSV data saved to $2"
