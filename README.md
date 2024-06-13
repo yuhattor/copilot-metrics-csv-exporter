@@ -1,4 +1,4 @@
-## Usage
+# Copilot Metrics CSV Exporter
 
 This project is a set of scripts that generate CSV files for the Usage Metrics API. The scripts are written in Python and Bash.
 
@@ -10,6 +10,7 @@ sh main.sh [enterprise_name]
 ```
 
 And the following CSV files will be generated:
+
 - Total usage metrics for the enterprise
 - Usage metrics per language for the enterprise
 - Total usage metrics per organizations
@@ -17,6 +18,12 @@ And the following CSV files will be generated:
 
 The data will be saved in the `data` folder.
 Duplicates will be removed from the CSV files.
+
+## GitHub Actions Configuration
+
+1. Set up the following secrets in the GitHub repository:
+   - `GITHUB_TOKEN`: GitHub token with the right permissions for GitHub Copilot Metrics(See the detail: https://docs.github.com/rest/copilot/copilot-usage)
+   - `ENTERPRISE_SLUG`: Name of the enterprise
 
 ## Usage for each script
 
