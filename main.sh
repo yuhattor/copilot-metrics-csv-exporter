@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Define the file paths
 org_total="data/organization-total.csv"
 ent_total="data/enterprise-total.csv"
 org_per_lang="data/organization-per-language-result.csv"
@@ -10,7 +11,7 @@ sh get-per-language-ent.sh $1 $ent_per_lang
 sh get-total-ent.sh $1 $ent_total
 
 # Create list of organizations
-python get-orgs.py
+sh get-orgs.sh $1
 
 # loop for each line of "orgs.tmp.txt" and pass as the argument
 while read org; do

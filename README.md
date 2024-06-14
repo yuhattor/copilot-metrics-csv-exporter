@@ -1,10 +1,8 @@
 # Copilot Metrics CSV Exporter
 
 This project is a set of scripts that generate CSV files for the Usage Metrics API.
-You can run the scripts to generate the CSV files for a specific enterprise.
 
 ```sh
-pip install -r requirements.txt
 sh main.sh [enterprise_name] 
 ```
 
@@ -15,8 +13,11 @@ And the following CSV files will be generated:
 - Total usage metrics per organizations
 - Usage metrics per language per organizationss
 
-The data will be saved in the `data` folder.
-Duplicates will be removed from the CSV files.
+The data will be saved in the `data` folder. You can back up historical data by automating it with GitHub Actions.
+
+<img src="./assets/file-generated.png" width="240px" />
+<img src="./assets/csv-image.png" width="240px" />
+
 
 ## GitHub Actions Configuration
 
@@ -28,6 +29,12 @@ Duplicates will be removed from the CSV files.
 ## Usage for each script
 
 This script will generate CSV files for the Usage Metrics API
+
+### Organization list
+
+```bash
+sh get-orgs.sh [enterprise_name]
+```
 
 ### Organization Metrics
 

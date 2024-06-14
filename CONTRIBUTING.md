@@ -22,8 +22,5 @@ To set up your development environment for contributing:
 4. Write or update tests as necessary.
 5. Submit a pull request to the main repository.
 
-## Code of Conduct and Reporting Issues
 
-Please refer to our `CODE_OF_CONDUCT.md` for information on our community standards and reporting issues.
-
-Thank you for contributing to the Metrics CSV Exporter project!
+Thank you for contributing to the Copilot Metrics CSV Exporter project!

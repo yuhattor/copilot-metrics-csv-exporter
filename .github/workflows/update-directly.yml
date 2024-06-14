@@ -13,11 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.9'
-          cache: 'pip'
-      - run: pip install -r requirements.txt
       - name: 
         run: |
           # Set the git configuration
@@ -35,5 +30,4 @@ jobs:
           fi
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
           ENTERPRISE_SLUG: ${{ secrets.ENTERPRISE_SLUG }}
