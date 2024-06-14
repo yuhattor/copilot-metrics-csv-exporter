@@ -1,2 +1,0 @@
-python_graphql_client
-python-dotenv
