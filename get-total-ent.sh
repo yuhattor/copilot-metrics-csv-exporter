@@ -6,6 +6,8 @@ DATA=$(gh api \
   -H "X-GitHub-Api-Version: 2022-11-28" \
   /enterprises/$1/copilot/usage)
 
+# Adding Headers to the CSV file
+echo "Day,Total Suggestions Count,Total Acceptances Count,Total Lines Suggested,Total Lines Accepted,Total Active Users" >> "$2"
 # Convert the retrieved data to CSV using jq and save it to a file
 echo "$DATA" | jq -r '
   .[] | 
@@ -24,4 +26,4 @@ echo "$DATA" | jq -r '
     $total_active_users
   ] | @csv' >> "$2"
 
-echo "CSV data saved to $2"
+echo "Aggregated Metrics for enterprise:$1 is saved in $2"

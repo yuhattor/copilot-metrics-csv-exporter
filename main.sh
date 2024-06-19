@@ -24,6 +24,6 @@ done < data/orgs.tmp
 for file in $org_total\
             $ent_total\
             $org_per_lang\
-            $ent_per_l; do   
+            $ent_per_lang; do   
   awk -i inplace '!seen[$0]++' "$file"
 done

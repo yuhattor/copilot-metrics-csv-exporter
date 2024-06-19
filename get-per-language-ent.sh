@@ -6,6 +6,9 @@ DATA=$(gh api \
   -H "X-GitHub-Api-Version: 2022-11-28" \
   /enterprises/$1/copilot/usage)
 
+# Adding Headers to the CSV file
+echo "Day,Language,Editor,Suggestions,Acceptances,Lines Suggested,Lines Accepted,Active Users" >> $2
+
 # The breakdown part of the data is extracted and converted to CSV, and saved to a file
 echo "$DATA" | jq -r '
   .[] | 
@@ -22,4 +25,4 @@ echo "$DATA" | jq -r '
     .active_users
   ] | @csv' >> $2
 
-echo "Breakdown data saved to $2"
+echo "Break-down Metrics for enterprise:$1 is saved in $2"
