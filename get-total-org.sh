@@ -2,7 +2,8 @@
 
 # Get the breakdown data for the usage in the organization
 DATA=$(gh api \
-  -H "Accept: application/vnd.github.v3+json" \
+  -H "Accept: application/vnd.github+json" \
+  -H "X-GitHub-Api-Version: 2023-11-28" \
   /orgs/$1/copilot/usage)
 
 # Adding Headers to the CSV file

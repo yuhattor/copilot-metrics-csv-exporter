@@ -18,5 +18,7 @@ get_orgs_query() {
     "
 }
 
-DATA=$(gh api graphql --paginate -f query="$(get_orgs_query)")
+DATA=$(gh api graphql --paginate -F query="$(get_orgs_query)" \
+  -H "Accept: application/vnd.github+json" \
+  -H "X-GitHub-Api-Version: 2023-11-28")
 echo "$DATA" | jq -r '.data.enterprise.organizations.nodes[] | .login' > data/orgs.tmp
